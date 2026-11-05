@@ -1,1 +1,834 @@
 
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff9ef">
+
+<title>Boldog születésnapot, Grétiii! 🎂</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --cream: #fff9ef;
+    --peach: #f8d9c4;
+    --orange: #df986e;
+    --yellow: #f4d58d;
+    --green: #a9b9a0;
+    --dark: #51483f;
+    --muted: #887d71;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(circle at 10% 15%, #f8e5d7 0%, transparent 32%),
+        radial-gradient(circle at 90% 70%, #e8eddf 0%, transparent 35%),
+        #fff9ef;
+}
+
+/* CONFETTI */
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 8px;
+    height: 12px;
+    border-radius: 3px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* FELSŐ NAVIGÁCIÓ */
+
+.topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: #96795e;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+.music-button {
+    border: 1px solid #e8d8c7;
+    background: #ffffffc9;
+    color: var(--dark);
+    border-radius: 40px;
+    padding: 12px 19px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.music-button:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.music-icon {
+    font-size: 18px;
+    color: var(--orange);
+}
+
+/* NYITÓOLDAL */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 110px 20px 90px;
+    position: relative;
+}
+
+.hero-label {
+    background: #ffffffb8;
+    border: 1px solid #ebddcb;
+    padding: 10px 22px;
+    border-radius: 40px;
+    color: #a17e5f;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    animation: appear 1s ease both;
+}
+
+.hero h1 {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: clamp(53px, 10vw, 105px);
+    line-height: 1.35;
+    color: #ba8465;
+    animation: appear 1.3s ease both;
+}
+
+.hero h1 span {
+    color: #8c9c7e;
+    display: block;
+}
+
+.hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(19px, 3vw, 27px);
+    margin-top: 25px;
+    color: #786c5e;
+    animation: appear 1.7s ease both;
+}
+
+.hero-description {
+    max-width: 490px;
+    font-size: 13px;
+    line-height: 2;
+    color: var(--muted);
+    margin-top: 22px;
+    animation: appear 2s ease both;
+}
+
+.hero-buttons {
+    margin-top: 38px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.button-primary {
+    background: #d69c78;
+    color: white;
+    border: none;
+    padding: 16px 27px;
+    border-radius: 40px;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px #d69c7830;
+    transition: .3s;
+}
+
+.button-primary:hover {
+    background: #bd805c;
+    transform: translateY(-4px);
+}
+
+.button-secondary {
+    background: white;
+    color: #8a806e;
+    border: 1px solid #e8d8c7;
+    padding: 16px 27px;
+    border-radius: 40px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.button-secondary:hover {
+    background: #f5eadb;
+}
+
+.hero-bottom {
+    position: absolute;
+    bottom: 27px;
+    color: #aa9a87;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+/* ÁLTALÁNOS SZEKCIÓK */
+
+section {
+    padding: 100px 22px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading span {
+    font-size: 10px;
+    color: #bd9873;
+    letter-spacing: 4px;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 500;
+    color: #786d5e;
+    margin-top: 13px;
+}
+
+/* GALÉRIA */
+
+.gallery {
+    max-width: 1050px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.photo-card {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 12px 35px #75604a15;
+    transition: .4s;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px) rotate(-1deg);
+}
+
+.photo-card img {
+    display: block;
+    width: 100%;
+    height: 410px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.photo-caption {
+    text-align: center;
+    padding: 18px 5px 10px;
+    font-family: 'Playfair Display', serif;
+    color: #97826c;
+    font-size: 18px;
+}
+
+/* KEDVES GONDOLAT */
+
+.message-banner {
+    background: linear-gradient(120deg, #f5e4d4, #edf0e5);
+    text-align: center;
+    padding: 100px 25px;
+}
+
+.message-banner .decoration {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.message-banner p {
+    max-width: 780px;
+    margin: auto;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(23px, 4vw, 35px);
+    line-height: 1.65;
+    color: #756b5c;
+}
+
+.message-banner .small-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    margin-top: 25px;
+    color: #958675;
+    letter-spacing: 2px;
+}
+
+/* SZEMÉLYES ÜZENET */
+
+#personal {
+    display: none;
+}
+
+#personal.visible {
+    display: block;
+    animation: reveal .9s ease both;
+}
+
+.personal-card {
+    max-width: 850px;
+    margin: auto;
+    padding: clamp(25px, 6vw, 65px);
+    background: white;
+    border: 1px solid #f0e5d8;
+    border-radius: 18px;
+    box-shadow: 0 15px 50px #75604a12;
+}
+
+.personal-label {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #bd9873;
+}
+
+.personal-card h2 {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    font-size: clamp(38px, 7vw, 65px);
+    color: #bd896a;
+    margin: 20px 0 40px;
+}
+
+.personal-text {
+    font-family: 'Playfair Display', serif;
+    color: #756a5e;
+    font-size: clamp(18px, 2.6vw, 22px);
+    line-height: 1.9;
+}
+
+.personal-text p {
+    margin-bottom: 24px;
+}
+
+.personal-text .emphasis {
+    color: #829477;
+    font-weight: 600;
+}
+
+.personal-signature {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #bd896a;
+}
+
+/* ZÁRÁS */
+
+.closing {
+    text-align: center;
+    background: #f1eadf;
+    padding: 85px 20px;
+}
+
+.closing h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(38px, 7vw, 65px);
+    color: #bd896a;
+    font-weight: 400;
+}
+
+.closing p {
+    max-width: 550px;
+    margin: 22px auto 0;
+    font-size: 13px;
+    line-height: 2.1;
+    color: #84796b;
+}
+
+.closing-decoration {
+    font-size: 26px;
+    margin-top: 25px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #a59684;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+/* ANIMÁCIÓK */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBIL */
+
+@media(max-width: 700px) {
+
+    .topbar {
+        padding: 17px 15px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .music-button {
+        padding: 10px 12px;
+        font-size: 9px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+
+    .photo-card img {
+        height: 360px;
+    }
+
+    section {
+        padding: 75px 18px;
+    }
+
+    .hero {
+        padding-top: 115px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div id="confetti"></div>
+
+<!-- ZENE -->
+<audio id="birthdayMusic" loop preload="none">
+    <source src="Happy Birthday Song Remix 🎂🔥 Powerful Beats & Party Vibes!.mp3" type="audio/mpeg">
+</audio>
+
+<header class="topbar">
+    <div class="logo">A little surprise <span>✦</span></div>
+
+    <button class="music-button" id="musicButton">
+        <span class="music-icon">♫</span>
+        <span id="musicLabel">ZENE INDÍTÁSA</span>
+    </button>
+</header>
+
+<!-- NYITÓOLDAL -->
+
+<header class="hero">
+
+    <div class="hero-label">
+        TODAY IS ALL ABOUT YOU ✦
+    </div>
+
+    <h1>
+        Boldog születésnapot,
+        <span>Grétiii!</span>
+    </h1>
+
+    <div class="hero-subtitle">
+        Egy különleges nap egy igazán jó embernek.
+    </div>
+
+    <p class="hero-description">
+        Egy kis meglepetés, néhány kedves gondolat
+        és egy csokor jókívánság erre a különleges napra.
+        Remélem, mosolyt csal majd az arcodra! 😊
+    </p>
+
+    <div class="hero-buttons">
+
+        <button class="button-primary" onclick="showPersonal()">
+            Van valami, amit szeretnék elmondani ✨
+        </button>
+
+        <button class="button-secondary"
+        onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+            Nézd meg a meglepetést ↓
+        </button>
+
+    </div>
+
+    <div class="hero-bottom">
+        SCROLL DOWN · A LITTLE SURPRISE AWAITS
+    </div>
+
+</header>
+
+<!-- KÉPEK -->
+
+<section id="gallery">
+
+    <div class="section-heading">
+        <span>A LITTLE COLLECTION OF BEAUTY</span>
+        <h2>Néhány szép pillanat</h2>
+    </div>
+
+    <div class="gallery">
+
+        <div class="photo-card">
+            <img src="virág.jpg" alt="Virágok Gréti születésnapjára">
+            <div class="photo-caption">
+                A little bit of beauty ✿
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <img src="virág 2.jpg" alt="Virágok és szépség">
+            <div class="photo-caption">
+                A little bit of happiness ☀
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- KEDVES GONDOLAT -->
+
+<section class="message-banner">
+
+    <div class="decoration">🌼 ✨ 🌷</div>
+
+    <p>
+        „Az élet szépsége sokszor a legapróbb
+        dolgokban rejlik. A legszebb pedig az,
+        amikor valaki ezt észre is veszi,
+        és másokkal is képes megosztani.”
+    </p>
+
+    <div class="small-text">
+        NEVER STOP NOTICING THE LITTLE THINGS
+    </div>
+
+</section>
+
+<!-- SZEMÉLYES JELLEMZÉS -->
+
+<section id="personal">
+
+    <div class="personal-card">
+
+        <div class="personal-label">
+            A FEW WORDS JUST FOR YOU
+        </div>
+
+        <h2>Grétiii ☀</h2>
+
+        <div class="personal-text">
+
+            <p>
+                Van valami, amit szerintem érdemes
+                elmondani neked, és ez nem más, mint
+                az, hogy milyen értékes személyiség vagy.
+            </p>
+
+            <p>
+                Tudod, sok ember hajlamos elsiklani
+                az élet apró szépségei mellett.
+                Mindig valami nagyobbat, valami többet
+                keresnek, miközben sokszor éppen azokban
+                a kis dolgokban rejlik a legtöbb öröm,
+                amelyek mellett nap mint nap elmegyünk.
+                Benned viszont nagyon szép dolog,
+                hogy képes vagy ezeket észrevenni.
+            </p>
+
+            <p>
+                Az, hogy egy apró figyelmességnek,
+                egy kedves gesztusnak vagy akár egy
+                egyszerű hétköznapi pillanatnak is
+                őszintén tudsz örülni, sokat elárul
+                rólad. Azt mutatja, hogy nem veszed
+                természetesnek a jó dolgokat,
+                hanem valóban értékeled őket.
+            </p>
+
+            <p>
+                Ehhez társul a kedvességed és a
+                törődő természeted. Az, ahogyan
+                másokhoz viszonyulsz, ahogyan figyelsz
+                az emberekre, és ahogyan képes vagy
+                meglátni bennük is a jót, szerintem
+                igazán becsülendő tulajdonság.
+            </p>
+
+            <p>
+                Mert jó embernek lenni nem feltétlenül
+                azt jelenti, hogy valaki hatalmas dolgokat
+                tesz. Sokszor éppen az apró gesztusokban
+                mutatkozik meg igazán. Egy kedves szóban,
+                egy őszinte mosolyban, egy kis odafigyelésben.
+                És úgy gondolom, ezek azok a dolgok,
+                amelyekben te igazán különleges vagy.
+            </p>
+
+            <p>
+                Szerintem az ilyen hozzáállás egyfajta
+                ajándék is. Nemcsak neked, hanem azoknak
+                is, akiknek lehetőségük van megismerni
+                téged. Hiszen egy olyan ember, aki képes
+                örülni a kis dolgoknak, és közben másokkal
+                is törődik, sokkal többet ad a környezetének,
+                mint azt talán észreveszi.
+            </p>
+
+            <p>
+                Azt kívánom neked, hogy az életben mindig
+                legyen miért mosolyognod, legyenek körülötted
+                olyan emberek, akik ugyanilyen szeretettel
+                és figyelemmel fordulnak feléd, és soha ne
+                fogyj ki azokból az apró örömökből,
+                amelyek ennyire széppé teszik a mindennapjaidat.
+            </p>
+
+            <p class="emphasis">
+                És kérlek, maradj mindig ilyen!
+                Ne veszítsd el azt a kedvességet,
+                azt a törődést és azt a képességet,
+                amivel a legkisebb dolgokban is
+                meglátod a szépet. Mert ez nem
+                magától értetődő, hanem egy igazán
+                értékes emberi tulajdonság.
+            </p>
+
+        </div>
+
+        <div class="personal-signature">
+            Nagyon boldog születésnapot, Grétiii! ☀
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ZÁRÓ RÉSZ -->
+
+<section class="closing">
+
+    <h2>Legyen csodás éved!</h2>
+
+    <p>
+        Rengeteg nevetést, vidám pillanatot,
+        új élményeket, sok-sok sikert és
+        megannyi apró boldogságot kívánok neked!
+
+        <br><br>
+
+        Érezd jól magad, ünnepelj nagyot,
+        és legyen ez a nap legalább olyan
+        különleges, mint amilyen te vagy!
+    </p>
+
+    <div class="closing-decoration">
+        🌷 🎂 ☀️ 🎉
+    </div>
+
+</section>
+
+<footer>
+    MADE WITH CARE · A LITTLE BIRTHDAY SURPRISE
+</footer>
+
+<script>
+
+// ZENELEJÁTSZÓ
+
+const music = document.getElementById("birthdayMusic");
+const musicButton = document.getElementById("musicButton");
+const musicLabel = document.getElementById("musicLabel");
+
+let isPlaying = false;
+
+musicButton.addEventListener("click", async () => {
+
+    if (!isPlaying) {
+
+        try {
+            await music.play();
+
+            isPlaying = true;
+            musicLabel.textContent = "ZENE SZÓL ♫";
+
+        } catch (error) {
+
+            musicLabel.textContent = "NEM SIKERÜLT ELINDÍTANI";
+
+        }
+
+    } else {
+
+        music.pause();
+        isPlaying = false;
+        musicLabel.textContent = "ZENE INDÍTÁSA";
+
+    }
+
+});
+
+// SZEMÉLYES ÜZENET MEGNYITÁSA
+
+function showPersonal() {
+
+    const section = document.getElementById("personal");
+
+    section.classList.add("visible");
+
+    section.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    // Kis konfetti meglepetés
+    launchConfetti();
+
+}
+
+// SZÜLETÉSNAPI KONFETTI
+
+function launchConfetti() {
+
+    const container = document.getElementById("confetti");
+
+    const colors = [
+        "#e8ae83",
+        "#f2d58e",
+        "#a9b99e",
+        "#e7b6a4",
+        "#d7c4a5",
+        "#ffffff"
+    ];
+
+    for (let i = 0; i < 90; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.className = "confetti-piece";
+
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        piece.style.transform =
+            "rotate(" + Math.random() * 360 + "deg)";
+
+        container.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        }, 8500);
+
+    }
+
+}
+
+// INDULÁSKOR EGY KIS KONFETTI
+
+window.addEventListener("load", () => {
+    setTimeout(launchConfetti, 600);
+});
+
+</script>
+
+</body>
+</html>
+
