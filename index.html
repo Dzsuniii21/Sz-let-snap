@@ -271,11 +271,34 @@ section {
 }
 
 .photo-card {
-    background: white;
-    padding: 12px;
-    border-radius: 12px;
+    position: relative;
+    background: #fffdf9;
+    padding: 18px;
+    border: 1px solid #ead9c6;
+    border-radius: 16px;
     box-shadow: 0 12px 35px #75604a15;
     transition: .4s;
+}
+.photo-card::before,
+.photo-card::after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+    color: #a4ad83;
+    font-size: 19px;
+    letter-spacing: 9px;
+    pointer-events: none;
+    text-shadow: 0 1px 3px #fff9ef;
+}
+.photo-card::before {
+    content: "✿  ❀  🌼  ❀  ✿";
+    top: 3px;
+}
+.photo-card::after {
+    content: "❀  🌷  ✿  🌷  ❀";
+    bottom: 53px;
 }
 
 .photo-card:hover {
@@ -287,7 +310,8 @@ section {
     width: 100%;
     height: 410px;
     object-fit: cover;
-    border-radius: 7px;
+    border: 3px solid #f3e4d2;
+    border-radius: 9px;
 }
 
 .photo-caption {
@@ -340,14 +364,26 @@ section {
 }
 
 .personal-card {
+    position: relative;
     max-width: 850px;
     margin: auto;
-    padding: clamp(25px, 6vw, 65px);
-    background: white;
-    border: 1px solid #f0e5d8;
+    padding: clamp(28px, 6vw, 68px);
+    background: linear-gradient(145deg, #fffefa, #fff9f1);
+    border: 1px solid #e8d7c4;
     border-radius: 18px;
-    box-shadow: 0 15px 50px #75604a12;
+    box-shadow: 0 15px 50px #75604a18;
 }
+.personal-card::before,
+.personal-card::after {
+    content: "✿  ❀  🌿  ❀  ✿";
+    display: block;
+    text-align: center;
+    color: #a2ad8d;
+    font-size: 17px;
+    letter-spacing: 7px;
+}
+.personal-card::before { margin-bottom: 25px; }
+.personal-card::after { margin-top: 28px; }
 
 .personal-label {
     text-align: center;
@@ -366,19 +402,30 @@ section {
 }
 
 .personal-text {
-    font-family: 'Playfair Display', serif;
-    color: #756a5e;
-    font-size: clamp(18px, 2.6vw, 22px);
+    max-width: 690px;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 34px);
+    background: #fffdf8;
+    border: 1px solid #eee0cf;
+    border-radius: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: #51483f;
+    font-size: clamp(17px, 2.2vw, 20px);
+    font-weight: 400;
     line-height: 1.9;
+    box-shadow: inset 0 0 24px #d9c4a51a;
 }
 
 .personal-text p {
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
+.personal-text p:last-child { margin-bottom: 0; }
 
 .personal-text .emphasis {
-    color: #829477;
-    font-weight: 600;
+    color: #667b59;
+    font-weight: 700;
+    border-top: 1px solid #e9ddcc;
+    padding-top: 20px;
 }
 
 .personal-signature {
@@ -473,6 +520,15 @@ footer {
 
     .photo-card img {
         height: 360px;
+    }
+    .photo-card::before,
+    .photo-card::after {
+        font-size: 15px;
+        letter-spacing: 5px;
+    }
+    .personal-text {
+        padding: 20px;
+        line-height: 1.8;
     }
 
     section {
@@ -684,6 +740,9 @@ footer {
 const music = document.getElementById("birthdayMusic");
 const musicButton = document.getElementById("musicButton");
 const musicLabel = document.getElementById("musicLabel");
+
+// A zene alap hangerője 18% (0.18 = 18%).
+music.volume = 0.18;
 
 let isPlaying = false;
 
